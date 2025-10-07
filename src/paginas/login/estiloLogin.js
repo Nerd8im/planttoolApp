@@ -15,11 +15,14 @@ export default StyleSheet.create({
   },
   card: {
     backgroundColor: "#dde8cf", // Roxo translúcido
-    borderRadius: 15,
+    borderRadius: 30,
     borderColor: '#fff',
     padding: 20,
-    width: 280,
-    alignItems: "center",
+    width: 460,
+    height: 600,
+    position: 'absolute',
+    bottom: 0, // Fixa o componente na parte inferior
+    zIndex: 1,
     justifyContent: 'space-between',
     elevation: 10, // sombra no Android
     shadowColor: "#000", // sombra no iOS
@@ -38,7 +41,7 @@ export default StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#ffffff20",
+    backgroundColor: "#88c679",
     borderRadius: 10,
     paddingHorizontal: 10,
     width: "100%",
@@ -47,6 +50,7 @@ export default StyleSheet.create({
   },
   inputIcon: {
     marginRight: 10,
+
   },
   input: {
     flex: 1,
@@ -54,7 +58,7 @@ export default StyleSheet.create({
     fontSize: 16,
   },
   botao: {
-    backgroundColor: "#508244", // roxo escuro
+    backgroundColor: "#508244", // verdin do bom 
     marginTop: 20,
     width: "100%",
     height: 45,
@@ -64,7 +68,7 @@ export default StyleSheet.create({
     flexDirection: "row",
   },
   botaoTexto: {
-    color: "#fff",
+    color: "#dde8cf",
     fontSize: 16,
     fontWeight: "bold",
     marginRight: 10,
