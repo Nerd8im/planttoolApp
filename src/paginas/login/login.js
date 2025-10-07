@@ -71,7 +71,7 @@ export default function Login({ navigation }) {
                 <View style={style.card}>
                     <Text style={style.label}>Email</Text>
                     <View style={style.inputContainer}>
-                        <Ionicons name="person-outline" size={20} color="#fff" style={style.inputIcon} />
+                        <Ionicons name="person-outline" size={20} color="#587a50" style={style.inputIcon} />
                         <TextInput
                             style={style.input}
                             placeholder="Digite o seu Email"
@@ -84,7 +84,7 @@ export default function Login({ navigation }) {
 
                     <Text style={style.label}>Senha</Text>
                     <View style={style.inputContainer}>
-                        <Ionicons name="lock-closed-outline" size={20} color="#fff" style={style.inputIcon} />
+                        <Ionicons name="lock-closed-outline" size={20} color="#587a50" style={style.inputIcon} />
                         <TextInput
                             style={style.input}
                             placeholder="Digite sua senha"

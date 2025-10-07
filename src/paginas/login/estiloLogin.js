@@ -14,7 +14,7 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   card: {
-    backgroundColor: "rgba(218, 218, 218, 0.3)", // Roxo translúcido
+    backgroundColor: "#dde8cf", // Roxo translúcido
     borderRadius: 15,
     borderColor: '#fff',
     padding: 20,
@@ -50,11 +50,11 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
-    color: "#fff",
+    color: "#587a50",
     fontSize: 16,
   },
   botao: {
-    backgroundColor: "#4B0082", // roxo escuro
+    backgroundColor: "#508244", // roxo escuro
     marginTop: 20,
     width: "100%",
     height: 45,
