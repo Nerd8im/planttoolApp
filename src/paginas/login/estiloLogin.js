@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
+   // width: 1000,
+    height: 890,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -14,40 +16,40 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   card: {
-    backgroundColor: "#dde8cf", // Roxo translúcido
+    backgroundColor: "#dde8cf", 
     borderRadius: 30,
     borderColor: '#fff',
     padding: 20,
     width: 460,
     height: 600,
     position: 'absolute',
-    bottom: 0, // Fixa o componente na parte inferior
+    bottom: 0, 
     zIndex: 1,
-    justifyContent: 'space-between',
     elevation: 10, // sombra no Android
     shadowColor: "#000", // sombra no iOS
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 5,
   },
-  label: {
-    color: "#fff",
-    alignSelf: "flex-start",
-    marginLeft: 5,
-    fontSize: 14,
-    fontWeight: "bold",
-    marginTop: 10,
-  },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#88c679",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    width: "100%",
-    height: 45,
-    marginTop: 5,
-  },
+label: {
+  color: "#fff",
+  alignSelf: "flex-start",
+  marginLeft: 5,
+  fontSize: 14,
+  fontWeight: "bold",
+  marginTop: 10, // Reduza esse valor para aproximar do input acima
+},
+inputContainer: {
+  flexDirection: "row",
+  alignItems: "center",
+  backgroundColor: "#88c679",
+  borderRadius: 10,
+  paddingHorizontal: 10,
+  width: "90%", // ou 100%, como preferir
+  height: 45,
+  marginTop: 5, // Pode ser 2 ou até 0 se quiser bem colado ao label
+  alignSelf: "center",
+},
   inputIcon: {
     marginRight: 10,
 
@@ -57,16 +59,17 @@ export default StyleSheet.create({
     color: "#587a50",
     fontSize: 16,
   },
-  botao: {
-    backgroundColor: "#508244", // verdin do bom 
-    marginTop: 20,
-    width: "100%",
-    height: 45,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-  },
+botao: {
+  backgroundColor: "#508244",
+  marginTop: 15, // Diminua esse valor para aproximar do input acima
+  width: "90%",
+  height: 45,
+  borderRadius: 10,
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+  alignSelf: "center",
+},
   botaoTexto: {
     color: "#dde8cf",
     fontSize: 16,
