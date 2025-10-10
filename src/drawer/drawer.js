@@ -1,7 +1,6 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
 import PublicacaoDepoimento from '../paginas/publicacaoDepoimento/publicacaoDepoimento.js'
-import HomeStack from '../stackNavigator/stackNav.js'
 import estiloDrawer from './estiloDrawer.js'
 import HomeScreen from '../paginas/home/home.js'
 import MeuPerfil from '../paginas/perfil/perfil.js'

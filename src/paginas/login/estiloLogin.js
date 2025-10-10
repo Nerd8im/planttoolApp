@@ -1,78 +1,73 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-   // width: 1000,
-    height: 890,
-    justifyContent: "center",
-    alignItems: "center",
   },
   imagem: {
     flex: 1,
     width: "100%",
     height: "100%",
-    justifyContent: "center",
+    justifyContent: "flex-end", // faz o card ir para baixo
     alignItems: "center",
   },
   card: {
-    backgroundColor: "#dde8cf", 
-    borderRadius: 30,
-    borderColor: '#fff',
+    backgroundColor: "#dde8cf",
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     padding: 20,
-    width: 460,
-    height: 600,
-    position: 'absolute',
-    bottom: 0, 
+    width: "100%",
+    height: height * 0.6, // responsivo
     zIndex: 1,
-    elevation: 10, // sombra no Android
-    shadowColor: "#000", // sombra no iOS
+    elevation: 10,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 5,
   },
-label: {
-  color: "#fff",
-  alignSelf: "flex-start",
-  marginLeft: 5,
-  fontSize: 14,
-  fontWeight: "bold",
-  marginTop: 10, // Reduza esse valor para aproximar do input acima
-},
-inputContainer: {
-  flexDirection: "row",
-  alignItems: "center",
-  backgroundColor: "#88c679",
-  borderRadius: 10,
-  paddingHorizontal: 10,
-  width: "90%", // ou 100%, como preferir
-  height: 45,
-  marginTop: 5, // Pode ser 2 ou até 0 se quiser bem colado ao label
-  alignSelf: "center",
-},
+  label: {
+    color: "#dde8cf",
+    alignSelf: "flex-start",
+    marginLeft: 5,
+    fontSize: width * 0.035,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#88c679",
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    width: "90%",
+    height: height * 0.055,
+    marginTop: 5,
+    alignSelf: "center",
+  },
   inputIcon: {
     marginRight: 10,
-
   },
   input: {
     flex: 1,
     color: "#587a50",
-    fontSize: 16,
+    fontSize: width * 0.04,
   },
-botao: {
-  backgroundColor: "#508244",
-  marginTop: 15, // Diminua esse valor para aproximar do input acima
-  width: "90%",
-  height: 45,
-  borderRadius: 10,
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "row",
-  alignSelf: "center",
-},
+  botao: {
+    backgroundColor: "#508244",
+    marginTop: 15,
+    width: "90%",
+    height: height * 0.055,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    alignSelf: "center",
+  },
   botaoTexto: {
     color: "#dde8cf",
-    fontSize: 16,
+    fontSize: width * 0.04,
     fontWeight: "bold",
     marginRight: 10,
   },
