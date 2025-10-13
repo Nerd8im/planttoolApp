@@ -1,57 +1,71 @@
-import React, { useState } from 'react'
-import { useNavigation, useFocusEffect } from '@react-navigation/native'
-import { SafeAreaView, FlatList, Platform, StyleSheet } from 'react-native'
-import Cards from '../../componentes/cards/cards.js'
-import { pegarDepoimentos } from '../../servicos/posts.js'
+import React from 'react'
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+  Image
+} from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import Icon from 'react-native-vector-icons/Ionicons' 
+import styles from './style.js'
+import stackNavigator from '../../../src/stackNavigator/stackNav.js'
 
-export default function App() {
+export default function TelaPrincipal() {
   const navigation = useNavigation()
-  const [depoimentos, setDepoimentos] = useState([])
-  const [refreshing, setRefreshing] = useState(false)
 
-  const carregarDepoimentos = async () => {
-    setRefreshing(true)
-    const dados = await pegarDepoimentos(navigation)
-    if (dados) setDepoimentos(dados)
-    setRefreshing(false)
-  }
+  const categorias = ['Tudo', 'Frutas', 'Legumes', 'Verduras', 'Comestíveis', 'Trepadeiras']
 
-  useFocusEffect(
-    React.useCallback(() => {
-      carregarDepoimentos()
-    }, [])
-  )
-  
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={depoimentos}
-        keyExtractor={(item) => item.depoimento_id.toString()}
-        renderItem={({ item }) => (
-          <Cards
-            avatarUrl={'https://placecats.com/neo/300/200'}
-            postTitle={item.depoimento_titulo}
-            time={new Date(item.depoimento_data_criacao).toLocaleDateString()}
-            text={item.depoimento_conteudo}
-            comments={0}
-            onStarPress={() => console.log('Star pressed', item.depoimento_id)}
-            onReportPress={() => console.log('Report pressed', item.depoimento_id)}
-            onCardPress={() =>
-              navigation.navigate('Depoimento', { depoimentoId: item.depoimento_id })
-            }
-          />
-        )}
-        refreshing={refreshing}
-        onRefresh={carregarDepoimentos}
-      />
+      {/* Barra de busca */}
+      <View style={styles.searchContainer}>
+        <TextInput
+          placeholder="buscar por plantas"
+          placeholderTextColor="#999"
+          style={styles.searchInput}
+        />
+        <Icon name="search" size={20} color="#444" style={styles.searchIcon} />
+      </View>
+
+      {/* Menu de categorias */}
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoryMenu}>
+        {categorias.map((item, index) => (
+          <Text key={index} style={[styles.categoryItem, index === 0 && styles.selectedCategory]}>
+            {item}
+          </Text>
+        ))}
+      </ScrollView>
+
+      {/* Card de recomendação */}
+      <View style={styles.cardContainer}>
+        <Text style={styles.cardTitle}>Recomendação de plantas</Text>
+        <Image
+          source={require('../../../assets/plant-icon.png')} 
+          style={styles.cardImage}
+        />
+      </View>
+
+      {/* Ícones no rodapé */}
+      <View style={styles.footer}>
+        <TouchableOpacity>
+          <Icon name="leaf-outline" size={30} color="#000" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Icon name="home-outline" size={30} color="#000" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={navigation.navigate('Perfil')}>
+          <Icon name="person-outline" size={30} color="#000" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Botão flutuante de chat */}
+      <TouchableOpacity style={styles.floatingButton}>
+        <Icon name="chatbubble-ellipses-outline" size={30} color="#3a713e" />
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f0f0f0',
-    paddingTop: Platform.OS === 'android' ? 7 : 0,
-  },
-})

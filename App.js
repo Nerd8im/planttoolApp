@@ -32,7 +32,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!autenticado ? (
+        {!autenticado ? (   
           <>
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Cadastro" component={Cadastro} />
@@ -43,7 +43,7 @@ export default function App() {
             <Stack.Screen
               name="Depoimento"
               component={Depoimento}
-              options={{ title: 'Depoimento', headerShown: true }}
+              options={{ title: 'Depoimento', headerShown: false }}
             />
           </>
         )}

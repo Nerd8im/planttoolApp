@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+import MeuPerfil from '../paginas/perfil/perfil.js';
 import HomeScreen from '../paginas/home/home.js'
 import Depoimento from '../paginas/depoimento/depoimento.js'
 
