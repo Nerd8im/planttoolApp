@@ -38,6 +38,7 @@ export default StyleSheet.create({
     color: '#000',
   },
   cardContainer: {
+    flex: 1,
     backgroundColor: '#d8e8c9',
     borderRadius: 10,
     padding: 20,
@@ -55,13 +56,13 @@ export default StyleSheet.create({
     color: '#3a713e',
   },
   cardImage: {
-    width: 60,
-    height: 60,
+    width: '60%',
+    height: '60%',
     resizeMode: 'contain',
   },
   footer: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 0,
     left: 0,
     right: 0,
     backgroundColor: '#c7e4b5',

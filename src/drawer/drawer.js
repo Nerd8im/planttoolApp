@@ -28,9 +28,9 @@ export default function DrawerNav() {
         drawerItemStyle: { marginVertical: 5, borderBottomWidth: 1, borderBottomColor: '#eee' },
         drawerLabelStyle: { textAlign: 'center' },
       }}>
-      <Drawer.Screen options={{ headerShown: false }} name="Depoimentos recentes" component={HomeScreen} />
-      <Drawer.Screen name="Perfil" component={MeuPerfil} />
-      <Drawer.Screen name="Publicar Depoimento" component={PublicacaoDepoimento} />
+      <Drawer.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
+      <Drawer.Screen options={{ headerShown: false }} name="Perfil" component={MeuPerfil} />
+      <Drawer.Screen options={{ headerShown: false }} name="Publicar Depoimento" component={PublicacaoDepoimento} />
     </Drawer.Navigator>
   );
 }
