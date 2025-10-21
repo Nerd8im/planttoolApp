@@ -1,1 +1,1 @@
-EXPO_PUBLIC_API_ROTA = http://localhost:3000/planttool/v1
+EXPO_PUBLIC_API_ROTA = https://planttool-tcc-production.up.railway.app/planttool/v1
