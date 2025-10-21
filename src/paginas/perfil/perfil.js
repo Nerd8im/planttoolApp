@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import styles from './style.js';
@@ -14,14 +15,24 @@ import styles from './style.js';
 export default function Perfil() {
   const navigation = useNavigation();
 
+  const deslogar = async () => {
+    try {
+      await AsyncStorage.removeItem('tokenSessao')
+      console.log('Sessão removida com sucesso!')
+      navigation.navigate('login')
+    } catch (error) {
+      console.log('Erro ao remover o token: ', error)
+    }
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-    
-      <TouchableOpacity style={styles.gearButton}>
-        <Icon name="settings-outline" size={25} color="#3a713e" />
+
+      <TouchableOpacity style={styles.gearButton} onPress={(deslogar)}>
+        <Icon name="exit-outline" size={25} color="#3a713e" />
       </TouchableOpacity>
 
- 
+
       <View style={styles.header}>
         <View style={styles.avatar}>
           <Icon name="person-outline" size={60} color="#3a713e" />
@@ -76,7 +87,7 @@ export default function Perfil() {
         </TouchableOpacity>
       </View>
 
-    
+
       <View style={styles.footer}>
         <TouchableOpacity>
           <Icon name="leaf-outline" size={30} color="#000" />

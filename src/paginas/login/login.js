@@ -41,6 +41,7 @@ export default function Login({ navigation }) {
 
 
                 await AsyncStorage.setItem('tokenSessao', responseData.tokenUsuario)
+                console.log(responseData)
 
                 navigation.reset({
                     index: 0,

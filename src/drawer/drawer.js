@@ -4,6 +4,7 @@ import PublicacaoDepoimento from '../paginas/publicacaoDepoimento/publicacaoDepo
 import estiloDrawer from './estiloDrawer.js';
 import HomeScreen from '../paginas/home/home.js';
 import MeuPerfil from '../paginas/perfil/perfil.js';
+import Login from '../paginas/login/login.js';
 import React, { useEffect, useState } from 'react';
 
 const Drawer = createDrawerNavigator();
@@ -28,9 +29,11 @@ export default function DrawerNav() {
         drawerItemStyle: { marginVertical: 5, borderBottomWidth: 1, borderBottomColor: '#eee' },
         drawerLabelStyle: { textAlign: 'center' },
       }}>
+        
       <Drawer.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
       <Drawer.Screen options={{ headerShown: false }} name="Perfil" component={MeuPerfil} />
       <Drawer.Screen options={{ headerShown: false }} name="Publicar Depoimento" component={PublicacaoDepoimento} />
+      <Drawer.Screen options={{ headerShown: false }} name="login" component={Login} />
     </Drawer.Navigator>
   );
 }
