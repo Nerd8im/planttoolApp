@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import styles from './configstyle.js';
 
-export default function Perfil() {
+export default function Config() {
   const navigation = useNavigation();
 
   const deslogar = async () => {

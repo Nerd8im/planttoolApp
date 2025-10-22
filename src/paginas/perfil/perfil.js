@@ -28,7 +28,7 @@ export default function Perfil() {
   return (
     <SafeAreaView style={styles.container}>
 
-      <TouchableOpacity style={styles.gearButton} onPress={(deslogar)}>
+      <TouchableOpacity style={styles.gearButton} onPress={(() => navigation.navigate('config'))}>
         <Icon name="exit-outline" size={25} color="#3a713e" />
       </TouchableOpacity>
 

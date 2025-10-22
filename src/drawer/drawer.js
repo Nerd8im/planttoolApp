@@ -2,6 +2,7 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
 import PublicacaoDepoimento from '../paginas/publicacaoDepoimento/publicacaoDepoimento.js';
 import estiloDrawer from './estiloDrawer.js';
+import Config from '../paginas/config/config.js';
 import HomeScreen from '../paginas/home/home.js';
 import MeuPerfil from '../paginas/perfil/perfil.js';
 import Login from '../paginas/login/login.js';
@@ -34,6 +35,7 @@ export default function DrawerNav() {
       <Drawer.Screen options={{ headerShown: false }} name="Perfil" component={MeuPerfil} />
       <Drawer.Screen options={{ headerShown: false }} name="Publicar Depoimento" component={PublicacaoDepoimento} />
       <Drawer.Screen options={{ headerShown: false }} name="login" component={Login} />
+      <Drawer.Screen options={{ headerShown: false }} name="config" component={Config} />
     </Drawer.Navigator>
   );
 }
