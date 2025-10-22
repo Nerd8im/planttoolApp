@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     View,
     Text,
@@ -43,9 +43,12 @@ export default function Login({ navigation }) {
                 await AsyncStorage.setItem('tokenSessao', responseData.tokenUsuario)
                 console.log(responseData)
 
+                await AsyncStorage.setItem('emailUser', responseData.dadosUsuario.user_email)
+                console.log(responseData)
+
                 navigation.reset({
                     index: 0,
-                    routes: [{ name: 'DrawerNav' }]
+                    routes: [{ name: 'DrawerNav' }] // Ensure 'DrawerNav' is defined in your navigation stack
                 })
 
 
