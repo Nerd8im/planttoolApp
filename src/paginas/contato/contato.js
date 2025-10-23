@@ -9,15 +9,16 @@ import {
   Image
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import styles from './configstyle.js';
+import styles from './style.js';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Contato() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-
+  const navigation = useNavigation();
   const handleSubmit = () => {
-    // Handle form submission logic
+
     console.log("Form submitted:", { name, email, message });
   };
 
@@ -69,7 +70,7 @@ export default function Contato() {
 
         <View style={styles.contactLogoContainer}>
           <Image
-            source={require('../../../assets/shrek-pizzaria-logo.png')} // Use your actual logo here
+            source={require('../../../assets/tomatoe.jpg')} 
             style={styles.contactLogo}
           />
         </View>

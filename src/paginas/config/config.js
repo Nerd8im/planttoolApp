@@ -53,11 +53,15 @@ export default function Config() {
           <Text style={styles.buttonText}>Notificações</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('SobreNos'))}>
+          <Text style={styles.buttonText}>Sobre nós</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('Contato'))}>
           <Text style={styles.buttonText}>Fale Conosco</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} >
           <Text style={styles.buttonText}>Central de Ajuda</Text>
         </TouchableOpacity>
 

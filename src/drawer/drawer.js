@@ -6,6 +6,8 @@ import Config from '../paginas/config/config.js';
 import HomeScreen from '../paginas/home/home.js';
 import MeuPerfil from '../paginas/perfil/perfil.js';
 import Login from '../paginas/login/login.js';
+import Contato from '../paginas/contato/contato.js';
+import SobreNos from '../paginas/sobrenozes/sobrenos.js';
 import React, { useEffect, useState } from 'react';
 
 const Drawer = createDrawerNavigator();
@@ -36,6 +38,8 @@ export default function DrawerNav() {
       <Drawer.Screen options={{ headerShown: false }} name="Publicar Depoimento" component={PublicacaoDepoimento} />
       <Drawer.Screen options={{ headerShown: false }} name="login" component={Login} />
       <Drawer.Screen options={{ headerShown: false }} name="config" component={Config} />
+       <Drawer.Screen options={{ headerShown: false }} name="Contato" component={Contato} />
+              <Drawer.Screen options={{ headerShown: false }} name="SobreNos" component={SobreNos} />
     </Drawer.Navigator>
   );
 }
