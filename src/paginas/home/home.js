@@ -1,4 +1,6 @@
 import React from 'react'
+import { Listaplana } from "../../componentes/lista/index.js"
+import { FlatList } from 'react-native-web'
 import {
   View,
   Text,
@@ -37,6 +39,17 @@ export default function TelaPrincipal() {
         ))}
       </ScrollView>
 
+      <FlatList
+            data={process.env.EXPO_PUBLIC_API_ROTA/especies}
+            numColumns={1}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => (
+              
+                <Listaplana Nome ={ item.plantaEspecie_nome} tempo de rega = {item.plantaEspecie_intervalo_rega_horas} imagem = {item.plantaEspecie_foto} Descricao = {item.plantaEspecie_descricao} Cuidados ={item.plantaEspecie_cuidados} > </Listaplana>
+            )}
+        />
     
       <View style={styles.cardContainer}>
         <Text style={styles.cardTitle}>Recomendação de plantas</Text>
