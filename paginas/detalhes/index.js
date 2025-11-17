@@ -3,7 +3,7 @@ import React from 'react'
 import { View, Text, Image, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import styles from './styleDetalhes.js'
-import { useRoute } from "@react-navigation/native";
+//import { useRoute } from "@react-navigation/native";
 import  Listaplana  from '../../componentes/lista/index.js'
 
 export default function Detalhes({ route, navigation }) {

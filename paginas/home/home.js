@@ -23,7 +23,7 @@ export default function TelaPrincipal() {
 const [plantas, setPlantas] = React.useState([])
 
 React.useEffect(() => {
-  fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies`)
+     fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies`)
     .then(res => res.json())
     .then(json => {
       console.log('🔍 Dados recebidos da API:', json)
@@ -40,7 +40,7 @@ React.useEffect(() => {
           placeholderTextColor="#999"
           style={styles.searchInput}
         />
-        <Icon name="search" size={20} color="#444" style={styles.searchIcon} />
+        <Icon name="Search" size={20} color="#444" style={styles.searchIcon} />
       </View>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoryMenu}>
