@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+
 import styles from './style.js';
 
 export default function Perfil() {
@@ -42,7 +43,7 @@ export default function Perfil() {
 
 
       <View style={styles.mainButtons}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={() => navigation.navigate('config')} style={styles.button}>
           <Text style={styles.buttonText}>minha conta</Text>
         </TouchableOpacity>
 

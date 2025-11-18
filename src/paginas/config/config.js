@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+
 import {
   View,
   Text,
@@ -29,28 +29,16 @@ export default function Config() {
       <ScrollView contentContainerStyle={styles.mainContainer}>
         <Text style={styles.title}>Configurações</Text>
 
+        <TouchableOpacity style={styles.logoutButton} onPress={deslogar}>
+
+          <Icon name='chevron-left'  size={25} color="#3a713e"   />   </TouchableOpacity>
+
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Editar Perfil</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Alterar Senha</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Conectado com...</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Conta Privada</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Atividade Online</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Notificações</Text>
         </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('SobreNos'))}>
@@ -59,14 +47,6 @@ export default function Config() {
 
         <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('Contato'))}>
           <Text style={styles.buttonText}>Fale Conosco</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} >
-          <Text style={styles.buttonText}>Central de Ajuda</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Denunciar um Problema</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}>
