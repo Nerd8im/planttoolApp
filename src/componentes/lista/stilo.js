@@ -1,39 +1,40 @@
 import { Dimensions, StyleSheet } from "react-native";
-const largura = Dimensions.get('window').width / 2
 
+const largura = Dimensions.get('window').width / 2.3;
 
-const styles = StyleSheet.create ({
-  butao: {
-    pandingTop: 2,
-    paddingBottom: 1, 
-    paddingRight: 8,
-    paddingLeft: 8, 
-    alignItems: "center", 
+const styles = StyleSheet.create({
+  
+  card: {
+    backgroundColor: "#ffffff",
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: "#2e7d32",  // verde bonito
+    padding: 10,
+    alignItems: "center",
+    margin: 8,
     width: largura,
-    height: 'auto'
+    elevation: 5, // sombra no Android
+    shadowColor: "#000", // sombra no iOS
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 2 },
   },
 
-    movieItem: {
-        flex: 1,
-        alignItems: "center", 
-        margin: 1,
-        backgroundColor: "Gray", 
-        borderRadius: 1, 
-        padding: 1,
-      },
-      movieImage: {
-        width: 150, 
-        height: 190,
-        borderRadius: 1,
-        marginBottom: 1, 
-      },
-      movieText: {
-        fontSize: 10,
-        fontWeight: "bold",
-        color: "white",
-        textAlign: "center",
-      },
+  movieImage: {
+    width: 130,
+    height: 150,
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: "#4caf50",  // moldura da imagem
+    marginBottom: 6,
+  },
 
-})
+  movieText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#1b5e20",
+    textAlign: "center",
+  },
+});
 
 export default styles;

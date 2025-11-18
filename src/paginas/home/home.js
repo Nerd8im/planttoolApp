@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import  Listaplana  from '../../componentes/lista/index.js'
+import Listaplana from '../../componentes/lista/index.js'
 import {
   View,
   Text,
@@ -16,21 +16,39 @@ import styles from './style.js'
 
 export default function TelaPrincipal() {
   const navigation = useNavigation()
-  const [dados, setDados] = useState([])
-
+  const [plantas, setPlantas] = useState([])
   const categorias = ['Tudo', 'Frutas', 'Legumes', 'Verduras', 'Comestíveis', 'Trepadeiras']
 
-const [plantas, setPlantas] = React.useState([])
+  useEffect(() => {
+    const fetchPlantas = async () => {
+      try {
+        // Buscar todas as espécies
+        const response = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies`)
+        const especies = await response.json()
 
-React.useEffect(() => {
-     fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies`)
-    .then(res => res.json())
-    .then(json => {
-      console.log('🔍 Dados recebidos da API:', json)
-      setPlantas(json)
-    })
-    .catch(err => console.error('Erro ao buscar espécies:', err))
-}, [])
+        // Para cada planta, buscar sua imagem pelo ID
+        const plantasComFotos = await Promise.all(
+          especies.map(async (planta) => {
+            try {
+              const fotoRes = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies/imagem/${planta.id}`)
+              const fotoJson = await fotoRes.json()
+              // Assumindo que a API retorna um objeto com a propriedade 'url' da imagem
+              return { ...planta, plantaEspecie_foto: fotoJson.url || planta.plantaEspecie_foto }
+            } catch (err) {
+              console.error(`Erro ao buscar imagem da planta ${planta.id}:`, err)
+              return planta
+            }
+          })
+        )
+
+        setPlantas(plantasComFotos)
+      } catch (err) {
+        console.error('Erro ao buscar espécies:', err)
+      }
+    }
+
+    fetchPlantas()
+  }, [])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,33 +58,35 @@ React.useEffect(() => {
           placeholderTextColor="#999"
           style={styles.searchInput}
         />
-        <Icon name="Search" size={20} color="#444" style={styles.searchIcon} />
+        <Icon name="search" size={20} color="#444" style={styles.searchIcon} />
       </View>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoryMenu}>
         {categorias.map((item, index) => (
-          <Text key={index} style={[styles.categoryItem, index === 0 && styles.selectedCategory]}>
+          <Text
+            key={index}
+            style={[styles.categoryItem, index === 0 && styles.selectedCategory]}
+          >
             {item}
           </Text>
         ))}
       </ScrollView>
 
-
-
-<FlatList
-  data={plantas}
-  keyExtractor={(item, index) => (item?.id ? item.id.toString() : index.toString())}
-  renderItem={({ item }) => (
-    <Listaplana
-      Nome={item.plantaEspecie_nome}
-      tempoDeRega={item.plantaEspecie_intervalo_rega_horas}
-      imagem={item.plantaEspecie_foto}
-      Descricao={item.plantaEspecie_descricao}
-      Cuidados={item.plantaEspecie_cuidados}
-    />
-  )}
-/>
-
+      <FlatList
+        data={plantas}
+        numColumns={2}
+        columnWrapperStyle={{ justifyContent: 'center' }}
+        keyExtractor={(item, index) => (item?.id ? item.id.toString() : index.toString())}
+        renderItem={({ item }) => (
+          <Listaplana
+            plantaEspecie_nome={item.plantaEspecie_nome}
+            plantaEspecie_intervalo_rega_horas={item.plantaEspecie_intervalo_rega_horas}
+            imagem={item.plantaEspecie_foto}
+            plantaEspecie_descricao={item.plantaEspecie_descricao}
+            plantaEspecie_cuidados={item.plantaEspecie_cuidados}
+          />
+        )}
+      />
 
       <View style={styles.cardContainer}>
         <Text style={styles.cardTitle}>Recomendação de plantas</Text>
