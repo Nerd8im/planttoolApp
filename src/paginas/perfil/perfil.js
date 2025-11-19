@@ -79,7 +79,7 @@ export default function Perfil() {
         </ScrollView>
 
 
-        <TouchableOpacity style={styles.addButton}>
+        <TouchableOpacity onPress={() => navigation.navigate('RegistrarPlanta')} style={styles.addButton}>
           <Icon name="add" size={30} color="#3a713e" />
         </TouchableOpacity>
       </View>
