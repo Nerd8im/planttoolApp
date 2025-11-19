@@ -51,11 +51,7 @@ export default StyleSheet.create({
     marginRight: 8,
   },
 
-  input: {
-    flex: 1,
-    fontSize: 16,
-    color: '#333',
-  },
+
 
   inline: {
     flexDirection: 'row',
@@ -86,4 +82,23 @@ export default StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+
+ 
+  input: {
+    flex: 1,
+    fontSize: 16,
+    color: '#333',
+    height: 40, // Ajuste para altura do picker
+    backgroundColor: '#eee',
+    borderRadius: 50,
+    paddingLeft: 10,
+  },
+
+  picker: {
+    height: 40,
+    width: '50%',
+    backgroundColor: '#eee',
+    borderRadius: 50,
+  },
+
 });
