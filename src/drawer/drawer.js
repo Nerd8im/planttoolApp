@@ -10,6 +10,7 @@ import Contato from '../paginas/contato/contato.js';
 import Detalhes from '../paginas/detalhes/index.js'
 import SobreNos from '../paginas/sobrenozes/sobrenos.js';
 import RegistrarPlanta from '../paginas/cadrastoPlant/index.js';
+import Assistente from '../paginas/assistente/assistente.js';
 import React, { useEffect, useState } from 'react';
 
 const Drawer = createDrawerNavigator();
@@ -44,6 +45,7 @@ export default function DrawerNav() {
       <Drawer.Screen options={{ headerShown: false }} name="Contato" component={Contato} />
       <Drawer.Screen options={{ headerShown: false }} name="SobreNos" component={SobreNos} />
       <Drawer.Screen options={{ headerShown: false }} name="RegistrarPlanta" component={RegistrarPlanta} />
+      <Drawer.Screen options={{ headerShown: false }} name="Assistente" component={Assistente} />
     </Drawer.Navigator>
   );
 }

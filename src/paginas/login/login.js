@@ -17,9 +17,8 @@ export default function Login({ navigation }) {
     const [email, setEmail] = React.useState('');
     const [senha, setSenha] = React.useState('')
 
-
     async function logarUsuario(email, senha) {
-        if (email && senha.length) {
+        if (email && senha.length > 4) {
             try {
                 const rotaBase = process.env.EXPO_PUBLIC_API_ROTA
                 const dados = { email, senha: senha }

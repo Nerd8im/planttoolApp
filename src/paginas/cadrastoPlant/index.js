@@ -2,21 +2,27 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, SafeAreaView, KeyboardAvoidingView, Platform, Picker } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import style from './stiloRegistrar.js';
-import cadastrarPlant from './index'; // Assumindo que você tem a função de cadastro da planta
+
+import { cadastrarPlant } from '../../servicos/plantascadastros.js';
 
 export default function RegistrarPlanta({ navigation }) {
   const [plantaEspecie_nome, setPlantaEspecieNome] = useState(''); // Mantém o nome da espécie selecionada
   const [nome_da_planta_do_usuário, setNomeDaPlantaDoUsuario] = useState(''); // Nome personalizado da planta
   const [especies, setEspecies] = useState([]); // Lista de espécies obtida da API
+  console.log(especies);
   const [loading, setLoading] = useState(false); // Indicador de carregamento
 
   // Função para buscar as espécies da API
   const fetchEspecies = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies/imagem`); // Substitua pela URL correta da sua API
+      // Use o endpoint que retorna a lista de espécies (remova a referência a 'especies.plantaESpecie_id')
+      const response = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies`);
       const data = await response.json();
-      setEspecies(data); // Armazenando a resposta da API
+      console.log('fetch especies ->', data);
+      // Normaliza para array: se a API devolver um objeto com propriedade (ex: { especies: [...] }) adapta.
+      const lista = Array.isArray(data) ? data : (Array.isArray(data.especies) ? data.especies : []);
+      setEspecies(lista);
     } catch (error) {
       console.error('Erro ao buscar espécies:', error);
     } finally {
@@ -48,8 +54,8 @@ export default function RegistrarPlanta({ navigation }) {
                   onValueChange={(itemValue) => setPlantaEspecieNome(itemValue)}
                 >
                   <Picker.Item label="Selecione uma espécie" value="" /> {/* Opção padrão */}
-                  {especies.map((especie, index) => (
-                    <Picker.Item label={especie.nome} value={especie.nome} key={index} />
+                  {(Array.isArray(especies) ? especies : []).map((especie, i) => (
+                    <Picker.Item key={i} label={especie.plantaEspecie_nome} value={especie.plantaEspecie_nome} />
                   ))}
                 </Picker>
               )}

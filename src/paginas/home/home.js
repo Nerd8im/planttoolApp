@@ -30,12 +30,12 @@ export default function TelaPrincipal() {
         const plantasComFotos = await Promise.all(
           especies.map(async (planta) => {
             try {
-              const fotoRes = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies/imagem/${planta.id}`)
+              const fotoRes = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies/imagem/${planta.plantaEspecie_id}`)
               const fotoJson = await fotoRes.json()
               // Assumindo que a API retorna um objeto com a propriedade 'url' da imagem
               return { ...planta, plantaEspecie_foto: fotoJson.url || planta.plantaEspecie_foto }
             } catch (err) {
-              console.error(`Erro ao buscar imagem da planta ${planta.id}:`, err)
+              console.error(`Erro ao buscar imagem da planta ${planta.plantaEspecie_id}:`, err)
               return planta
             }
           })
@@ -108,7 +108,7 @@ export default function TelaPrincipal() {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.floatingButton}>
+      <TouchableOpacity style={styles.floatingButton} onPress={() => navigation.navigate('Assistente')}>
         <Icon name="chatbubble-ellipses-outline" size={30} color="#3a713e" />
       </TouchableOpacity>
     </SafeAreaView>
