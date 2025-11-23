@@ -22,17 +22,17 @@ export default function TelaPrincipal() {
   useEffect(() => {
     const fetchPlantas = async () => {
       try {
-        // Buscar todas as espécies
+  
         const response = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies`)
         const especies = await response.json()
 
-        // Para cada planta, buscar sua imagem pelo ID
+
         const plantasComFotos = await Promise.all(
           especies.map(async (planta) => {
             try {
               const fotoRes = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies/imagem/${planta.id}`)
               const fotoJson = await fotoRes.json()
-              // Assumindo que a API retorna um objeto com a propriedade 'url' da imagem
+             
               return { ...planta, plantaEspecie_foto: fotoJson.url || planta.plantaEspecie_foto }
             } catch (err) {
               console.error(`Erro ao buscar imagem da planta ${planta.id}:`, err)

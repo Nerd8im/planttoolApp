@@ -4,6 +4,23 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  picker: {
+  flex: 1,
+  height: 50, // Altura explícita
+  color: '#000', // Cor do texto
+  marginLeft: 8, // Ajuste para o ícone
+},
+inputContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderWidth: 1,
+  borderColor: '#ddd',
+  borderRadius: 8,
+  paddingHorizontal: 10,
+  marginBottom: 15,
+  backgroundColor: '#fff',
+  height: 50, // Altura fixa para o container
+},
 
   imagem: {
     flex: 1,

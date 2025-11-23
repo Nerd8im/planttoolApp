@@ -2,19 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, SafeAreaView, KeyboardAvoidingView, Platform, Picker } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import style from './stiloRegistrar.js';
-import cadastrarPlant from './index'; // Assumindo que você tem a função de cadastro da planta
+import cadastrarPlante from '../../servicos/plantascadrats.js'; // Assumindo que você tem a função de cadastro da planta
 
 export default function RegistrarPlanta({ navigation }) {
-  const [plantaEspecie_nome, setPlantaEspecieNome] = useState(''); // Mantém o nome da espécie selecionada
   const [nome_da_planta_do_usuário, setNomeDaPlantaDoUsuario] = useState(''); // Nome personalizado da planta
   const [especies, setEspecies] = useState([]); // Lista de espécies obtida da API
   const [loading, setLoading] = useState(false); // Indicador de carregamento
-
+  const [plantaEspecie_id, setPlantaEspecieId] = useState('');
+  const [plantaEspecie_nome, setPlantaEspecieNome] = useState('');
+  const [localPlantio, setLocalPlantio] = useState('');
+  const [medidaLocal, setMedidaLocal] = useState('');
   // Função para buscar as espécies da API
   const fetchEspecies = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies/imagem`); // Substitua pela URL correta da sua API
+      const response = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies`); // Substitua pela URL correta da sua API
       const data = await response.json();
       setEspecies(data); // Armazenando a resposta da API
     } catch (error) {
@@ -42,18 +44,62 @@ export default function RegistrarPlanta({ navigation }) {
               {loading ? (
                 <Text>Carregando...</Text> // Exibe um texto enquanto a lista está sendo carregada
               ) : (
-                <Picker
-                  selectedValue={plantaEspecie_nome}
-                  style={style.input}
-                  onValueChange={(itemValue) => setPlantaEspecieNome(itemValue)}
-                >
-                  <Picker.Item label="Selecione uma espécie" value="" /> {/* Opção padrão */}
-                  {especies.map((especie, index) => (
-                    <Picker.Item label={especie.nome} value={especie.nome} key={index} />
-                  ))}
-                </Picker>
-              )}
+              <Picker
+               style={style.inputContainer}
+              selectedValue={plantaEspecie_id}
+              onValueChange={(value,) => {
+                setPlantaEspecieId(value);
+                const item = especies.find(e => e.plantaEspecie_id === value);
+                setPlantaEspecieNome(item?.plantaEspecie_nome || '');
+              }}
+            >
+
+
+            {Array.isArray(especies) &&
+              especies.map((planta) => (
+                <Picker.Item
+                  key={planta.plantaEspecie_id}
+                  label={planta.plantaEspecie_nome}
+                  value={planta.plantaEspecie_id}
+                />
+              ))
+            }
+            </Picker>
+                          )}  
+                    
             </View>
+
+               <View>
+            <Text style={style.label}>Local que vai plantar</Text>
+            <Picker selectedValue={localPlantio} onValueChange={setLocalPlantio} style={style.inputContainer}>
+              <Picker.Item label="Selecione" value="" />
+              <Picker.Item label="Vaso" value="Vaso" />
+              <Picker.Item label="Jardim" value="Jardim" />
+              <Picker.Item label="Terrário" value="Terrário" />
+            </Picker>
+</View>
+             {/* Medida & pH */}
+            <View >
+               <Text style={style.label}>Medidas</Text>
+              <TextInput
+                style={[style.input, { width: '48%' }]}
+                placeholder="Medida m²"
+                value={medidaLocal}
+                onChangeText={setMedidaLocal}
+                keyboardType="numeric"
+              />
+</View>
+
+ <View>
+               <Text style={style.label}>PH</Text>
+              <TextInput
+                style={[style.input, { width: '48%' }]}
+                placeholder="PH"
+                value={medidaLocal}
+                onChangeText={setMedidaLocal}
+                keyboardType="numeric"
+              />
+</View>
 
             {/* Nome da Planta */}
             <Text style={style.label}>Nome da planta</Text>
@@ -69,9 +115,18 @@ export default function RegistrarPlanta({ navigation }) {
             </View>
 
             {/* Botão */}
-            <TouchableOpacity style={style.botao} onPress={() => cadastrarPlant(plantaEspecie_nome, nome_da_planta_do_usuário, navigation)}>
-              <Text style={style.botaoTexto}>Registrar Planta</Text>
-            </TouchableOpacity>
+<TouchableOpacity
+  style={style.botao}
+  onPress={() =>
+  cadastrarPlante({
+    plantaEspecie_id,
+    plantaEspecie_nome,
+    nome_da_planta_do_usuário
+  }, navigation)
+  }
+>
+  <Text style={style.botaoTexto}>Registrar Planta</Text>
+</TouchableOpacity>
           </View>
         </ImageBackground>
       </KeyboardAvoidingView>

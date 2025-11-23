@@ -29,11 +29,11 @@ export default function Config() {
       <ScrollView contentContainerStyle={styles.mainContainer}>
         <Text style={styles.title}>Configurações</Text>
 
-        <TouchableOpacity style={styles.logoutButton} onPress={deslogar}>
+        <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.navigate('Home')}>
 
           <Icon name='chevron-left'  size={25} color="#3a713e"   />   </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('PerfilEdicao'))}>
           <Text style={styles.buttonText}>Editar Perfil</Text>
         </TouchableOpacity>
 

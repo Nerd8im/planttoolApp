@@ -5,17 +5,19 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
-  ScrollView
+  ScrollView,
+  FlatList
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-
+import Listaplana from '../../componentes/plantas/index.js';
+import {useState } from 'react'
 import styles from './style.js';
 
 export default function Perfil() {
   const navigation = useNavigation();
-
+  const [plantas, setPlantas] = useState([])
   const deslogar = async () => {
     try {
       await AsyncStorage.removeItem('tokenSessao')
@@ -25,6 +27,24 @@ export default function Perfil() {
       console.log('Erro ao remover o token: ', error)
     }
   }
+
+  useState(() => {
+  const carregarPlantas = async () => {
+    try {
+      const token = await AsyncStorage.getItem('tokenSessao')
+      const resposta = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      const dados = await resposta.json()
+      setPlantas(dados)
+    } catch (error) {
+      console.log('Erro ao buscar plantas:', error)
+    }
+  }
+
+  carregarPlantas()
+}, [])
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -53,29 +73,24 @@ export default function Perfil() {
 
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
 
-          <View style={styles.plantCard}>
-            <View style={styles.imageCircle}>
-              <Image
-                source={require('../../../assets/tomatoe.jpg')} // coloque sua imagem aqui
-                style={styles.plantImage}
-              />
-            </View>
-            <Text style={styles.plantName}>Tomate</Text>
+          <FlatList
+  data={plantas}
+  numColumns={2}
+  columnWrapperStyle={{ justifyContent: 'center' }}
+  keyExtractor={(item, index) =>
+    item?.planta_id ? item.planta_id.toString() : index.toString()
+  }
+  renderItem={({ item }) => (
+    <Listaplana
+      planta_id={item.planta_id}
+      userPlanta_nome={item.userPlanta_nome}
+      imagem_url={item.imagem_url}
+      ultima_rega={item.ultima_rega}
+      plantaEspecie_nome={item.plantaEspecie_nome}
+    />
+  )}
+/>
 
-            <View style={styles.infoContainer}>
-              <Text style={styles.infoText}>
-                Vegetal <Text style={styles.infoValue}>Tipo</Text>
-              </Text>
-              <Text style={styles.infoText}>
-                Berinjela <Text style={styles.infoValue}>Planta</Text>
-              </Text>
-              <Text style={styles.infoText}>
-                Horta <Text style={styles.infoValue}>Local</Text>
-              </Text>
-              <Text style={styles.infoText}>10 MP</Text>
-              <Text style={styles.infoText}>7 PH</Text>
-            </View>
-          </View>
         </ScrollView>
 
 
