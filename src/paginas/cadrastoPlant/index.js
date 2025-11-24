@@ -7,6 +7,7 @@ import cadastrarPlante from '../../servicos/plantascadrats.js'; // Assumindo que
 export default function RegistrarPlanta({ navigation }) {
   const [nome_da_planta_do_usuário, setNomeDaPlantaDoUsuario] = useState(''); // Nome personalizado da planta
   const [especies, setEspecies] = useState([]); // Lista de espécies obtida da API
+  console.log(especies);
   const [loading, setLoading] = useState(false); // Indicador de carregamento
   const [plantaEspecie_id, setPlantaEspecieId] = useState('');
   const [plantaEspecie_nome, setPlantaEspecieNome] = useState('');
@@ -18,7 +19,10 @@ export default function RegistrarPlanta({ navigation }) {
     try {
       const response = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies`); // Substitua pela URL correta da sua API
       const data = await response.json();
-      setEspecies(data); // Armazenando a resposta da API
+      console.log('fetch especies ->', data);
+      // Normaliza para array: se a API devolver um objeto com propriedade (ex: { especies: [...] }) adapta.
+      const lista = Array.isArray(data) ? data : (Array.isArray(data.especies) ? data.especies : []);
+      setEspecies(lista);
     } catch (error) {
       console.error('Erro ao buscar espécies:', error);
     } finally {

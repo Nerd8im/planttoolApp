@@ -14,6 +14,8 @@ import PerfilEdicao from '../paginas/edicaoperfil/index.js';
 import Perfilam from '../paginas/amostraperfil.js/index.js';
 import termos from '../paginas/termos/index.js';
 import privacidade from '../paginas/privacidade/index.js';
+import Assistente from '../paginas/assistente/assistente.js';
+import React, { useEffect, useState } from 'react';
 
 const Drawer = createDrawerNavigator();
 
@@ -51,6 +53,7 @@ export default function DrawerNav() {
       <Drawer.Screen options={{ headerShown: false }} name="Perfilam" component={Perfilam} />
       <Drawer.Screen options={{ headerShown: false }} name="termos" component={termos} />
       <Drawer.Screen options={{ headerShown: false }} name="privacidade" component={privacidade} />
+      <Drawer.Screen options={{ headerShown: false }} name="Assistente" component={Assistente} />
     </Drawer.Navigator>
   );
 }
