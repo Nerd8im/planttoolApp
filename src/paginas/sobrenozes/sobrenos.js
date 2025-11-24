@@ -8,7 +8,7 @@ export default function SobreNos() {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.mainContainer}>
         <View style={styles.header}>
-          <Icon name="megaphone-outline" size={28} color="#3A5A40" />
+          <Icon name="arrow-back" size={28} color="#3A5A40"  onPress={() => navigation.navigate('config')}/>
         </View>
 
         <Text style={styles.title}>Sobre Nós</Text>

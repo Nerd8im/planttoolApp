@@ -27,18 +27,15 @@ export default function Config() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.mainContainer}>
+
+        <TouchableOpacity style={styles.header} onPress={() => navigation.navigate('perfil')}>
+
         <Text style={styles.title}>Configurações</Text>
 
-        <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.navigate('Home')}>
+          <Icon name='chevron-back'  size={25} color="#3a713e"   />   </TouchableOpacity>
 
-          <Icon name='chevron-left'  size={25} color="#3a713e"   />   </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('PerfilEdicao'))}>
+        <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('Perfilam'))}>
           <Text style={styles.buttonText}>Editar Perfil</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Conectado com...</Text>
         </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('SobreNos'))}>
@@ -49,11 +46,11 @@ export default function Config() {
           <Text style={styles.buttonText}>Fale Conosco</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('termos'))}>
           <Text style={styles.buttonText}>Termos de Uso</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button}onPress={(() => navigation.navigate('privacidade'))}>
           <Text style={styles.buttonText}>Política de Privacidade</Text>
         </TouchableOpacity>
 

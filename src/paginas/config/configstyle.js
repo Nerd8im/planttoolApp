@@ -10,6 +10,13 @@ export default StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
   },
+    header: {
+    backgroundColor: '#6B8E63',
+    padding: 10,
+    borderTopLeftRadius: 10,
+    borderBottomRightRadius: 30,
+    alignSelf: 'flex-start',
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',

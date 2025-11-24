@@ -23,7 +23,11 @@ export default function Contato() {
   };
 
   return (
+    
     <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+                <Icon name="arrow-back" size={28} color="#3A5A40"  onPress={() => navigation.navigate('config')}/>
+              </View>
       <ScrollView contentContainerStyle={styles.mainContainer}>
         <Text style={styles.title}>Contato</Text>
 
@@ -64,16 +68,12 @@ export default function Contato() {
           multiline
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <TouchableOpacity style={styles.button} >
           <Text style={styles.buttonText}>Enviar</Text>
         </TouchableOpacity>
 
-        <View style={styles.contactLogoContainer}>
-          <Image
-            source={require('../../../assets/tomatoe.jpg')} 
-            style={styles.contactLogo}
-          />
-        </View>
+
+        
       </ScrollView>
     </SafeAreaView>
   );

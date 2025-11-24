@@ -11,7 +11,9 @@ import Detalhes from '../paginas/detalhes/index.js'
 import SobreNos from '../paginas/sobrenozes/sobrenos.js';
 import RegistrarPlanta from '../paginas/cadrastoPlant/index.js';
 import PerfilEdicao from '../paginas/edicaoperfil/index.js';
-import React, { useEffect, useState } from 'react';
+import Perfilam from '../paginas/amostraperfil.js/index.js';
+import termos from '../paginas/termos/index.js';
+import privacidade from '../paginas/privacidade/index.js';
 
 const Drawer = createDrawerNavigator();
 
@@ -46,6 +48,9 @@ export default function DrawerNav() {
       <Drawer.Screen options={{ headerShown: false }} name="SobreNos" component={SobreNos} />
       <Drawer.Screen options={{ headerShown: false }} name="RegistrarPlanta" component={RegistrarPlanta} />
       <Drawer.Screen options={{ headerShown: false }} name="PerfilEdicao" component={PerfilEdicao} />
+      <Drawer.Screen options={{ headerShown: false }} name="Perfilam" component={Perfilam} />
+      <Drawer.Screen options={{ headerShown: false }} name="termos" component={termos} />
+      <Drawer.Screen options={{ headerShown: false }} name="privacidade" component={privacidade} />
     </Drawer.Navigator>
   );
 }

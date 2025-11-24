@@ -8,6 +8,13 @@ export default StyleSheet.create({
   mainContainer: {
     padding: 20,
   },
+    header: {
+    backgroundColor: '#6B8E63',
+    padding: 10,
+    borderTopLeftRadius: 10,
+    borderBottomRightRadius: 30,
+    alignSelf: 'flex-start',
+  },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
