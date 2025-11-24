@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, SafeAreaView, KeyboardAvoidingView, Platform, Picker } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import style from './stiloRegistrar.js';
-import cadastrarPlante from '../../servicos/plantascadrats.js'; // Assumindo que você tem a função de cadastro da planta
+import cadastrarPlante from '../../servicos/plantascadastros.js'; // Assumindo que você tem a função de cadastro da planta
 
 export default function RegistrarPlanta({ navigation }) {
   const [nome_da_planta_do_usuário, setNomeDaPlantaDoUsuario] = useState(''); // Nome personalizado da planta

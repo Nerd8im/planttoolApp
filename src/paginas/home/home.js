@@ -48,6 +48,7 @@ export default function TelaPrincipal() {
     }
 
     fetchPlantas()
+    
   }, [])
 
   return (

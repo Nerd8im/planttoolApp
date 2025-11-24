@@ -29,6 +29,8 @@ export default function App() {
     verificarToken()
   }, [])
 
+  // AsyncStorage.clear(); // Limpa o AsyncStorage para fins de teste
+
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>

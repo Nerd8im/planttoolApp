@@ -90,64 +90,26 @@ export default function Assistente() {
 
     // Função principal para enviar a mensagem (texto + imagem) para a API Gemini
     const sendMessageToAI = async (userText, imageAsset) => {
-        // Validação básica: exige que uma imagem seja anexada para análise
-        if (!imageAsset || imageAsset === null) return "Por favor, envie uma imagem para análise.";
+    setIsTyping(true);
 
-        try {
-            // Pega o token de sessão armazenado
-            const token = await AsyncStorage.getItem('tokenSessao');
+    // Exige imagem para analisar
+    if (!imageAsset) {
+        setIsTyping(false);
+        return "Por favor, envie uma imagem para análise.";
+    }
 
-            // Cria o objeto FormData para enviar dados e arquivos
-            const formData = new FormData();
-            formData.append('text', userText || 'Analise a imagem da planta e forneça um diagnóstico.');
+    try {
+        // Delay de 5 segundos para simular requisição real
+        await new Promise(resolve => setTimeout(resolve, 5000));
 
-            // Anexa a imagem como um arquivo (multipart/form-data)
-            if (imageAsset) {
-                formData.append("foto", {
-                    uri: imageAsset.uri,
-                    name: imageAsset.name,
-                    type: imageAsset.type,
-                });
-            }
-
-            const url = "https://planttool-tcc-production-1d76.up.railway.app/planttool/v1/gemini";
-
-            setIsTyping(true);
-
-            // Simula um tempo de carregamento da IA para melhor UX
-            await new Promise(r => setTimeout(r, 1500));
-
-            // Faz a requisição POST
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    // O React Native/fetch cuida do Content-Type: multipart/form-data
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: formData
-            });
-
-            // Lida com erros de status HTTP (4xx, 5xx)
-            if (!response.ok) {
-                const errorBody = await response.text();
-                console.error("Resposta da API não OK:", response.status, errorBody);
-                throw new Error(`Erro de resposta da API: ${response.status}`);
-            }
-
-            // Processa a resposta JSON
-            let data = await response.json();
-            // A resposta é uma string JSON aninhada que precisa ser parseada
-            data = JSON.parse(data.descricao);
-
-            return data.message;
-
-        } catch (err) {
-            console.error("Erro no envio:", err);
-            return "Erro ao analisar a imagem. Verifique sua conexão ou tente novamente.";
-        } finally {
-            setIsTyping(false); // Desativa o indicador de digitação
-        }
-    };
+        // Resposta simulada
+        return "Sua planta parece saudável! Continue regando regularmente e mantenha ela em ambiente iluminado.";
+    } catch (err) {
+        return "Erro na simulação da IA.";
+    } finally {
+        setIsTyping(false);
+    }
+};
 
     // Função para preparar e enviar a mensagem (usuário)
     const handleSend = async () => {
@@ -235,7 +197,7 @@ export default function Assistente() {
                 <View style={estilos.headerContentLeft}>
                     <TouchableOpacity style={estilos.iconButton} onPress={() => navigation.goBack()}>
                         <Ionicons name="arrow-back" size={24} color="#FFF" />
-                        <Text style={estilos.backText}>Voltar</Text>
+                        <Text style={estilos.backText}></Text>
                     </TouchableOpacity>
 
                     <View style={estilos.avatarContainer}>

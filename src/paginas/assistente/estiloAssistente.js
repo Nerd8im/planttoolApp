@@ -18,7 +18,7 @@ export const estilos = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     paddingTop: Platform.OS === 'android' ? 40 : 18,
-    backgroundColor: 'rgba(255,255,255,0.9)',
+    backgroundColor: '#3a713e',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(0,0,0,0.07)',
     overflow: 'hidden',
@@ -77,7 +77,7 @@ export const estilos = StyleSheet.create({
   // Fundo do chat
   chatBackground: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#e2efd5',
   },
 
   dateBadgeContainer: {
@@ -99,7 +99,7 @@ export const estilos = StyleSheet.create({
   messagesList: {
     padding: 20,
     paddingBottom: 26,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#e2efd5',
   },
 
   // Linha da mensagem
@@ -134,9 +134,9 @@ export const estilos = StyleSheet.create({
     borderTopRightRadius: 6,
   },
   messageBubbleAi: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#e2efd5',
     borderWidth: 1,
-    borderColor: '#ececec',
+    borderColor: '#b2bca7ff',
     borderTopLeftRadius: 6,
   },
 
@@ -224,6 +224,7 @@ export const estilos = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     padding: 12,
+    backgroundColor: '#e2efd5'
   },
 
   inputWrapper: {
@@ -258,6 +259,7 @@ export const estilos = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
+    backgroundColor: '#3a713e',
   },
 
   sendButtonActive: {},
