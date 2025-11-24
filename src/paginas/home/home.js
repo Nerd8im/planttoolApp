@@ -27,28 +27,15 @@ export default function TelaPrincipal() {
         const especies = await response.json()
 
 
-        const plantasComFotos = await Promise.all(
-          especies.map(async (planta) => {
-            try {
-              const fotoRes = await fetch(`${process.env.EXPO_PUBLIC_API_ROTA}/especies/imagem/${planta.plantaEspecie_id}`)
-              const fotoJson = await fotoRes.json()
-             
-              return { ...planta, plantaEspecie_foto: fotoJson.url || planta.plantaEspecie_foto }
-            } catch (err) {
-              console.error(`Erro ao buscar imagem da planta ${planta.plantaEspecie_id}:`, err)
-              return planta
-            }
-          })
-        )
-
-        setPlantas(plantasComFotos)
-      } catch (err) {
-        console.error('Erro ao buscar espécies:', err)
+    fetchPlantas()
+    
+        setPlantas(especies)
+      } catch (error) {
+        console.error('Erro ao buscar plantas:', error)
       }
     }
 
     fetchPlantas()
-    
   }, [])
 
   return (
@@ -56,10 +43,10 @@ export default function TelaPrincipal() {
       <View style={styles.searchContainer}>
         <TextInput
           placeholder="Buscar por plantas"
-          placeholderTextColor="#999"
+          placeholderTextColor="#ffffffff"
           style={styles.searchInput}
         />
-        <Icon name="search" size={20} color="#444" style={styles.searchIcon} />
+        <Icon name="search" size={20} color="#ffffffff" style={styles.searchIcon} />
       </View>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoryMenu}>
@@ -82,7 +69,7 @@ export default function TelaPrincipal() {
           <Listaplana
             plantaEspecie_nome={item.plantaEspecie_nome}
             plantaEspecie_intervalo_rega_horas={item.plantaEspecie_intervalo_rega_horas}
-            imagem={item.plantaEspecie_foto}
+            imagem={"https://tse1.mm.bing.net/th/id/OIP.OdF0hX9bHRoTPKzYPdXWmAHaHa?pid=Api&P=0&h=180"}
             plantaEspecie_descricao={item.plantaEspecie_descricao}
             plantaEspecie_cuidados={item.plantaEspecie_cuidados}
           />

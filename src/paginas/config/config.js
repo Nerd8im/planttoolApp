@@ -29,10 +29,9 @@ export default function Config() {
       <ScrollView contentContainerStyle={styles.mainContainer}>
 
         <TouchableOpacity style={styles.header} onPress={() => navigation.navigate('perfil')}>
-
-        <Text style={styles.title}>Configurações</Text>
-
           <Icon name='chevron-back'  size={25} color="#3a713e"   />   </TouchableOpacity>
+
+              <Text style={styles.title}>Configurações</Text>
 
         <TouchableOpacity style={styles.button} onPress={(() => navigation.navigate('Perfilam'))}>
           <Text style={styles.buttonText}>Editar Perfil</Text>

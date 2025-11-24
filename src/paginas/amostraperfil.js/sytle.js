@@ -1,16 +1,89 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-container: {
-flexGrow: 1,
-backgroundColor: '#f4f4f4',
-alignItems: 'center',
-paddingVertical: 20,
-},
-header: {
-alignItems: 'center',
-marginBottom: 25,
-},
+  container: {
+    paddingBottom: 120,
+    backgroundColor: '#f4f4f4',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+
+  header: {
+    alignItems: 'center',
+    marginBottom: 25,
+  },
+
+  avatar: {
+    width: 140,
+    height: 140,
+    borderRadius: 70,
+    borderWidth: 4,
+    borderColor: '#7fbf7f',
+    marginBottom: 10,
+  },
+
+  nome: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#2d4d2d',
+    marginBottom: 2,
+  },
+
+  email: {
+    fontSize: 16,
+    color: '#555',
+    marginBottom: 15,
+  },
+
+  card: {
+    width: '90%',
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 16,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowRadius: 5,
+    marginBottom: 20,
+  },
+
+  label: {
+    fontSize: 15,
+    color: '#333',
+    marginTop: 15,
+    marginBottom: 5,
+    fontWeight: '500',
+  },
+
+  input: {
+    backgroundColor: '#e9f3e6',
+    padding: 12,
+    borderRadius: 12,
+    fontSize: 15,
+  },
+
+  botaoSalvar: {
+    backgroundColor: '#4CAF50',
+    paddingVertical: 14,
+    paddingHorizontal: 40,
+    borderRadius: 12,
+    elevation: 4,
+    marginBottom: 40,
+  },
+
+  txtBotao: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+    headerTop: {
+    backgroundColor: '#6B8E63',
+    padding: 10,
+    borderTopLeftRadius: 10,
+    borderBottomRightRadius: 30,
+    alignSelf: 'flex-start',
+  },
+
   footer: {
     position: 'absolute',
     bottom: 0,
@@ -19,49 +92,8 @@ marginBottom: 25,
     backgroundColor: '#c7e4b5',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingVertical: 10,
+    paddingVertical: 12,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
   },
-avatar: {
-width: 120,
-height: 120,
-borderRadius: 60,
-marginBottom: 10,
-},
-nome: {
-fontSize: 22,
-fontWeight: 'bold',
-color: '#333',
-},
-card: {
-width: '90%',
-backgroundColor: '#fff',
-padding: 20,
-borderRadius: 12,
-elevation: 3,
-},
-label: {
-fontSize: 14,
-color: '#555',
-marginTop: 10,
-},
-input: {
-backgroundColor: '#eaeaea',
-padding: 10,
-borderRadius: 8,
-marginTop: 5,
-},
-botaoSalvar: {
-marginTop: 20,
-backgroundColor: '#4CAF50',
-paddingVertical: 12,
-paddingHorizontal: 30,
-borderRadius: 10,
-},
-txtBotao: {
-color: '#fff',
-fontSize: 16,
-fontWeight: 'bold',
-}
 });

@@ -53,6 +53,13 @@ inputContainer: {
     marginTop: 10,
     marginBottom: 5,
   },
+      header: {
+    backgroundColor: '#6B8E63',
+    padding: 10,
+    borderTopLeftRadius: 10,
+    borderBottomRightRadius: 30,
+    alignSelf: 'flex-start',
+  },
 
   inputContainer: {
     flexDirection: 'row',

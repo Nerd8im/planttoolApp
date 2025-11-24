@@ -7,7 +7,7 @@ export default function Listaplana({
   plantaEspecie_descricao,
   plantaEspecie_cuidados,
   plantaEspecie_intervalo_rega_horas,
-  imagem
+
 }) {
 
   const navigation = useNavigation();
@@ -20,12 +20,12 @@ export default function Listaplana({
         plantaEspecie_descricao,
         plantaEspecie_cuidados,
         plantaEspecie_intervalo_rega_horas,
-        imagem
+       
       })}
     >
 
       <Image
-        source={{ uri: imagem }}
+        source={{ uri: "https://tse1.mm.bing.net/th/id/OIP.OdF0hX9bHRoTPKzYPdXWmAHaHa?pid=Api&P=0&h=180" }}
         style={styles.movieImage}
       />
 

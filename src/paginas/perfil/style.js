@@ -76,6 +76,9 @@ export default StyleSheet.create({
     fontSize: 16,
     color: '#2f5e2f',
     marginBottom: 10,
+    left: 10,
+    alignSelf: 'center',
+    
   },
 
   plantCard: {
@@ -148,5 +151,38 @@ export default StyleSheet.create({
     paddingVertical: 10,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
+  },
+avatar: {
+width: 120,
+height: 120,
+borderRadius: 60,
+marginBottom: 10,
+},
+  card: {
+    width: 160,
+    height: 220,
+    backgroundColor: '#fff',
+    margin: 10,
+    borderRadius: 15,
+    elevation: 4,
+    alignItems: 'center',
+    padding: 10,
+  },
+  image: {
+    width: 130,
+    height: 130,
+    borderRadius: 12,
+    backgroundColor: '#ddd',
+  },
+  nome: {
+    marginTop: 10,
+    fontWeight: 'bold',
+    color: '#2f4f2f',
+    fontSize: 16,
+  },
+  info: {
+    fontSize: 12,
+    color: '#777',
+    marginTop: 2,
   },
 });

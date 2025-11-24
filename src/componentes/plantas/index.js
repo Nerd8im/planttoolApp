@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, Image, View } from "react-native";
+/**import { Text, TouchableOpacity, Image, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styles from "./sytle.js";
 
@@ -39,3 +39,4 @@ export default function Listaplana({
     </TouchableOpacity>
   );
 }
+*/
